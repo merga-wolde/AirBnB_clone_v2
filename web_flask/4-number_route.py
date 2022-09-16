@@ -1,45 +1,42 @@
 #!/usr/bin/python3
-"""Starts a Flask web application"""
+"""
+starts a Flask web application
+"""
 
 from flask import Flask
+
 app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
-def hello_holberton():
-    """Returns a string at the root route"""
-    return 'Hello HBNB!'
+@app.route("/", strict_slashes=False)
+def index():
+    return "Hello HBNB!"
 
 
-@app.route('/hbnb', strict_slashes=False)
+@app.route("/hbnb", strict_slashes=False)
 def hbnb():
-    """Returns a string at the /hbnb route"""
-    return 'HBNB'
+    return "HBNB"
 
 
-@app.route('/c/<text>', strict_slashes=False)
-def cisfun(text):
-    """Returns a string at the /c/<text> route,
-    expands the <text> variable"""
-    new = text.replace('_', ' ')
-    return 'C %s' % new
+@app.route("/c/<text>", strict_slashes=False)
+def C_is_fun(text):
+    return "C " + text.replace("_", " ")
 
 
-@app.route('/python', defaults={'text': 'is cool'}, strict_slashes=False)
-@app.route('/python/<text>', strict_slashes=False)
-def pythoniscool(text):
-    """Returns a string at the /python route, with a default text
-    of 'is cool', or the expansion of <text>"""
-    new = text.replace('_', ' ')
-    return 'Python %s' % new
+@app.route("/python", strict_slashes=False)
+def python():
+    return "Python is cool"
 
 
-@app.route('/number/<int:n>', strict_slashes=False)
-def number(n):
-    """Returns a string at the /number/<n> route,
-    only if n is an int"""
-    if type(n) == int:
-        return '%i is a number' % n
+@app.route("/python/<text>", strict_slashes=False)
+def Python_is_magic(text):
+    return "Python " + text.replace("_", " ")
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+
+@app.route("/number/<int:n>", strict_slashes=False)
+def n_is_a_number(n):
+    return "{:d} is a number".format(n)
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port='5000')
