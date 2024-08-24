@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This bash script sets up the nginx web server for the deployement of webstatic
+# This bash script sets up the nginx web server
 
 apt-get update
 apt-get install nginx -y
