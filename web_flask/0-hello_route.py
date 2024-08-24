@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 file: 0-hello_route.py
-desc: This module runs a simple flask app.
+desc: This module runs a simple
 
 """
 from flask import Flask
